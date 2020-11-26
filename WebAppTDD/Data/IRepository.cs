@@ -13,5 +13,6 @@ namespace WebAppTDD.Data
         void Add(T obj);
         void Edit(int id, T obj);
         void Delete(int id);
+        int LastInsertedIndex { get; }
     }
 }

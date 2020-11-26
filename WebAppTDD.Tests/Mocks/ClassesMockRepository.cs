@@ -10,6 +10,9 @@ namespace WebAppTDD.Tests.Mocks
     {
         private Dictionary<long, Class> classes = new Dictionary<long, Class>();
         private int lastInsertedIndex = 0;
+
+        public int LastInsertedIndex => lastInsertedIndex;
+
         public void Add(Class obj)
         {
             if (obj != null)
