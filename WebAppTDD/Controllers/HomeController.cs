@@ -33,6 +33,18 @@ namespace WebAppTDD.Controllers
             return View("Create");
         }
 
+        [HttpPost]
+        public ActionResult Create(Class cl)
+        {
+            if (cl != null)
+            {
+                classesRepository.Add(cl);
+                return RedirectToAction("Index");
+            }
+            else return View("Create");
+                
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
