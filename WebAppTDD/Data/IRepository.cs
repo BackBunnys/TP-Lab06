@@ -10,8 +10,8 @@ namespace WebAppTDD.Data
     {
         IEnumerable<T> GetAll();
         T GetById(int id);
-        bool Add(T obj);
-        bool Edit(int id, T obj);
-        bool Delete(int id);
+        void Add(T obj);
+        void Edit(int id, T obj);
+        void Delete(int id);
     }
 }

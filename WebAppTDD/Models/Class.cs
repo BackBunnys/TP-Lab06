@@ -7,6 +7,7 @@ namespace WebAppTDD.Models
 {
     public class Class
     {
+        public int Id { get; set; }
         public DateTime Date { get; set; }  
         public String Location { get; set; }
 
