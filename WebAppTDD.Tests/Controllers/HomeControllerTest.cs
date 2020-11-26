@@ -41,5 +41,34 @@ namespace WebAppTDD.Tests.Controllers
 
             Assert.IsInstanceOf<IEnumerable<Class>>(result.Model);
         }
+
+        private ViewResult GetResultForDetails()
+        {
+            ClassesMockRepository classes = new ClassesMockRepository();
+            classes.Add(new Class());
+            int insertedId = classes.GetAll().GetEnumerator().Current.Id;
+            HomeController homeController = new HomeController(classes);
+
+            ViewResult result = homeController.Details(insertedId) as ViewResult;
+            return result;
+        }
+
+        [Test]
+        public void DetailsNotNullTest()
+        {
+            Assert.NotNull(GetResultForDetails());
+        }
+
+        [Test]
+        public void DetailsReturnsDetailsCshtml()
+        {
+            Assert.AreEqual("Index", GetResultForDetails().ViewName);
+        }
+
+        [Test]
+        public void DetailsReturnsScheduleModel()
+        {
+            Assert.IsInstanceOf<Class>(GetResultForDetails().Model);
+        }
     }
 }
