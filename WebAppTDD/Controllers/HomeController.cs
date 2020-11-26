@@ -28,6 +28,11 @@ namespace WebAppTDD.Controllers
             return View("Details", classesRepository.GetById(id));
         }
 
+        public ActionResult Create()
+        {
+            return View("Create");
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -41,5 +46,6 @@ namespace WebAppTDD.Controllers
 
             return View();
         }
+
     }
 }
