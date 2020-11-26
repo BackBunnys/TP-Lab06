@@ -46,9 +46,7 @@ namespace WebAppTDD.Tests.Controllers
         {
             ClassesMockRepository classes = new ClassesMockRepository();
             classes.Add(new Class());
-            var enumerator = classes.GetAll().GetEnumerator();
-            enumerator.MoveNext();
-            int insertedId = enumerator.Current.Id;
+            int insertedId = classes.LastInsertedIndex;
             HomeController homeController = new HomeController(classes);
 
             ViewResult result = homeController.Details(insertedId) as ViewResult;
