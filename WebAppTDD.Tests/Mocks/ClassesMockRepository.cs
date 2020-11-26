@@ -13,7 +13,10 @@ namespace WebAppTDD.Tests.Mocks
         public void Add(Class obj)
         {
             if (obj != null)
-                classes.Add(++lastInsertedIndex, obj);
+            {
+                obj.Id = ++lastInsertedIndex;
+                classes.Add(lastInsertedIndex, obj);
+            }
             else throw new ArgumentException();
         }
 
@@ -25,8 +28,8 @@ namespace WebAppTDD.Tests.Mocks
         public void Edit(int id, Class obj)
         {
             Class cl;
-            if (classes.TryGetValue(id, out cl))
-                cl = obj;
+            if (classes.ContainsKey(id))
+                classes[id] = obj;
             else throw new ArgumentException();
         }
 
