@@ -5,6 +5,7 @@ using NUnit.Framework;
 
 using WebAppTDD.Controllers;
 using WebAppTDD.Models;
+using WebAppTDD.Tests.Mocks;
 
 namespace WebAppTDD.Tests.Controllers
 {
@@ -14,7 +15,7 @@ namespace WebAppTDD.Tests.Controllers
         [Test]
         public void IndexNotNullTest()
         {
-            HomeController homeController = new HomeController();
+            HomeController homeController = new HomeController(new ClassesMockRepository());
 
             ViewResult result = homeController.Index() as ViewResult;
 
@@ -24,7 +25,7 @@ namespace WebAppTDD.Tests.Controllers
         [Test]
         public void IndexReturnsIndexCshtml()
         {
-            HomeController homeController = new HomeController();
+            HomeController homeController = new HomeController(new ClassesMockRepository());
 
             ViewResult result = homeController.Index() as ViewResult;
 
@@ -34,7 +35,7 @@ namespace WebAppTDD.Tests.Controllers
         [Test]
         public void IndexReturnsScheduleModel()
         {
-            HomeController homeController = new HomeController();
+            HomeController homeController = new HomeController(new ClassesMockRepository());
 
             ViewResult result = homeController.Index() as ViewResult;
 
