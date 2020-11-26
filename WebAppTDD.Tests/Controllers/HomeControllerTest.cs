@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Web;
 using System.Web.Mvc;
 
 using NUnit.Framework;
@@ -69,6 +70,14 @@ namespace WebAppTDD.Tests.Controllers
         public void DetailsReturnsClassModel()
         {
             Assert.IsInstanceOf<Class>(GetResultForDetails().Model);
+        }
+
+        [Test]
+        public void DetailsThrowsHttpExceptionIfIdIsNotFound()
+        {
+            HomeController homeController = new HomeController(new ClassesMockRepository());
+
+            Assert.Throws<HttpException>(()=> homeController.Details(int.MinValue));
         }
 
         [Test]
