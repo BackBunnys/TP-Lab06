@@ -90,5 +90,33 @@ namespace WebAppTDD.Tests.Controllers
 
             Assert.AreEqual("Create", result.ViewName);
         }
+
+        [Test]
+        public void SuccessfulCreateRedirectToIndex()
+        {
+            HomeController homeController = new HomeController(new ClassesMockRepository());
+            Class cl = new Class()
+            {
+                Id = 11,
+                Date = System.DateTime.Now,
+                Location = "404a",
+                Discipline = "ТП",
+                Teacher = "Отец"
+            };
+
+            RedirectToRouteResult result = homeController.Create(cl) as RedirectToRouteResult;
+
+            Assert.AreEqual("Index", result.RouteValues["action"]);
+        }
+
+        [Test]
+        public void UnsuccessfulCreateReturnsCreateCshtml()
+        {
+            HomeController homeController = new HomeController(new ClassesMockRepository());
+
+            ViewResult result = homeController.Create(null) as ViewResult;
+
+            Assert.AreEqual("Create", result.ViewName);
+        }
     }
 }
