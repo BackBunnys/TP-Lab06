@@ -33,7 +33,7 @@ namespace WebAppTDD.Tests.Controllers
         }
 
         [Test]
-        public void IndexReturnsScheduleModel()
+        public void IndexReturnsClassModel()
         {
             HomeController homeController = new HomeController(new ClassesMockRepository());
 
@@ -66,9 +66,29 @@ namespace WebAppTDD.Tests.Controllers
         }
 
         [Test]
-        public void DetailsReturnsScheduleModel()
+        public void DetailsReturnsClassModel()
         {
             Assert.IsInstanceOf<Class>(GetResultForDetails().Model);
+        }
+
+        [Test]
+        public void CreateNotNullTest()
+        {
+            HomeController homeController = new HomeController(new ClassesMockRepository());
+
+            ViewResult result = homeController.Create() as ViewResult;
+
+            Assert.NotNull(result);
+        }
+
+        [Test]
+        public void CreateReturnsCreateCshtml()
+        {
+            HomeController homeController = new HomeController(new ClassesMockRepository());
+
+            ViewResult result = homeController.Create() as ViewResult;
+
+            Assert.AreEqual("Create", result.ViewName);
         }
     }
 }
