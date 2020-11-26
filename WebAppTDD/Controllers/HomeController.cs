@@ -23,7 +23,7 @@ namespace WebAppTDD.Controllers
             return View("Index", classesRepository.GetAll());
         }
         
-        public ViewResult Details(int id)
+        public ActionResult Details(int id)
         {
             return View("Details", classesRepository.GetById(id));
         }
