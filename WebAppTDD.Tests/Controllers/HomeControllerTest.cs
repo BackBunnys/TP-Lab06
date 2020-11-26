@@ -46,7 +46,9 @@ namespace WebAppTDD.Tests.Controllers
         {
             ClassesMockRepository classes = new ClassesMockRepository();
             classes.Add(new Class());
-            int insertedId = classes.GetAll().GetEnumerator().Current.Id;
+            var enumerator = classes.GetAll().GetEnumerator();
+            enumerator.MoveNext();
+            int insertedId = enumerator.Current.Id;
             HomeController homeController = new HomeController(classes);
 
             ViewResult result = homeController.Details(insertedId) as ViewResult;
@@ -62,7 +64,7 @@ namespace WebAppTDD.Tests.Controllers
         [Test]
         public void DetailsReturnsDetailsCshtml()
         {
-            Assert.AreEqual("Index", GetResultForDetails().ViewName);
+            Assert.AreEqual("Details", GetResultForDetails().ViewName);
         }
 
         [Test]
