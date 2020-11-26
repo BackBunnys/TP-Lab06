@@ -20,7 +20,7 @@ namespace WebAppTDD.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return View("Index", classesRepository.GetAll());
         }
 
         public ActionResult About()
