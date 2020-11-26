@@ -25,7 +25,12 @@ namespace WebAppTDD.Controllers
         
         public ActionResult Details(int id)
         {
-            return View("Details", classesRepository.GetById(id));
+            try
+            {
+                return View("Details", classesRepository.GetById(id));
+            } catch { 
+                throw new HttpException(404, "Emae"); 
+            }
         }
 
         public ActionResult Create()
