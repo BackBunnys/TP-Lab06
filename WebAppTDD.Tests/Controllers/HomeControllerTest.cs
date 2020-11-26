@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using NUnit.Framework;
 
 using WebAppTDD.Controllers;
+using WebAppTDD.Models;
 
 namespace WebAppTDD.Tests.Controllers
 {
